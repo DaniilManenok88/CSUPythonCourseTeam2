@@ -1,0 +1,56 @@
+import csv
+
+sneakers = {}
+
+while True:
+    print('Что хотите сделать?\n'
+          '1 - добавление\n'
+          '2 - отображение всего\n'
+          '3 - дозагрузить данные из файла оптом\n'
+          '4 - удалить позицию\n'
+          '5 - статистика по позициям\n'
+          '6 - сохранить в файл\n')
+    command = input()
+    if command == '1':
+        print('Введите название кроссовок:')
+        sneakersName = input()
+        print('Введите кол-во кроссовок:')
+        sneakersCount = int(input())
+        print('Введите производителя:')
+        sneakersManufacture = input()
+        print('Введите цену:')
+        sneakersPrice = float(input())
+        print('Введите размер:')
+        sneakersSize = float(input())
+
+        sneakers[sneakersName] = list[sneakersCount, sneakersManufacture, sneakersPrice, sneakersSize]
+
+    elif command == '2':
+        print(sneakers)
+
+    elif command == '3':
+
+        nolist = []
+
+        with open('цсв.csv', newline='') as File:
+            reader = csv.reader(File)
+            for row in reader:
+                nolist.append(row)
+
+        for nolist in nolist:
+            sneakers[nolist[0]] = nolist[1:]
+
+    elif command == '4':
+        print('Введите название кроссовок:')
+        key = input()
+        del sneakers[key]
+
+    elif command == '5':
+        print(len(sneakers))
+
+    elif command == '6':
+
+        with open('mycsvfile.csv', 'w') as f:
+            w = csv.DictWriter(f, sneakers.keys())
+            w.writeheader()
+            w.writerow(sneakers)
